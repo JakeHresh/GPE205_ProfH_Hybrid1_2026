@@ -5,7 +5,7 @@ public class TankPawn : Pawn
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
@@ -16,21 +16,33 @@ public class TankPawn : Pawn
 
     public override void MoveBackward()
     {
-        Debug.Log("Move Backward");
+        if (mover != null)
+        {
+            mover.Move(transform.forward, -moveSpeed);
+        }
     }
 
     public override void MoveForward()
     {
-        Debug.Log("Move Forward");
+        if (mover != null)
+        {
+            mover.Move(transform.forward, moveSpeed);
+        }
     }
 
     public override void RotateClockwise()
     {
-        Debug.Log("RotateClockwise");
+        if (mover != null)
+        {
+            mover.Rotate(turnSpeed);
+        }
     }
 
     public override void RotateCounterClockwise()
     {
-        Debug.Log("Rotate Counter-Clockwise");
+        if (mover != null)
+        {
+            mover.Rotate(-turnSpeed);
+        }
     }
 }
